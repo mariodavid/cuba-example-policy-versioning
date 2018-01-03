@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
+    <include file="com/rtcab/cepv/screens.xml"/>
+    <screen id="cepv$Customer.browse"
+            template="com/rtcab/cepv/web/customer/customer-browse.xml"/>
+    <screen id="cepv$Customer.edit"
+            template="com/rtcab/cepv/web/customer/customer-edit.xml"/>
+    <screen id="cepv$Policy.browse"
+            template="com/rtcab/cepv/web/policy/policy-browse.xml"/>
+    <screen id="cepv$Policy.edit"
+            template="com/rtcab/cepv/web/policy/policy-edit.xml"/>
+    <screen id="mainWindow"
+            template="com/rtcab/cepv/web/policy/ext-mainwindow.xml"/>
+</screen-config>

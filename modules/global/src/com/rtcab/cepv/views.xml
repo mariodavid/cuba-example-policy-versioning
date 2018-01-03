@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+    <view class="com.rtcab.cepv.entity.Customer"
+          extends="_local"
+          name="customer-view">
+        <property name="policies"
+                  view="_local"/>
+    </view>
+    <view class="com.rtcab.cepv.entity.Policy"
+          extends="_local"
+          name="policy-view">
+        <property name="customer"
+                  view="_minimal"/>
+    </view>
+</views>

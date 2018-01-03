@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.rtcab.cepv.web.policy.PolicyBrowse"
+        focusComponent="policiesTable"
+        lookupComponent="policiesTable"
+        messagesPack="com.rtcab.cepv.web.policy">
+    <dsContext>
+        <groupDatasource id="policiesDs"
+                         class="com.rtcab.cepv.entity.Policy"
+                         view="policy-view">
+            <query>
+                <![CDATA[select e from cepv$Policy e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="policiesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="policiesTable"
+                datasource="policiesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="policiesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="policyId"/>
+                <column id="customer"/>
+                <column id="coverStartDate"/>
+                <column id="coverEndDate"/>
+                <column id="documentsSigningDate"/>
+                <column id="premium"/>
+            </columns>
+            <rows datasource="policiesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="policiesTable.create"/>
+                <button id="editBtn"
+                        action="policiesTable.edit"/>
+                <button id="removeBtn"
+                        action="policiesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.rtcab.cepv.web.policy.PolicyEdit"
+        datasource="policyDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.rtcab.cepv.web.policy">
+    <dsContext>
+        <datasource id="policyDs"
+                    class="com.rtcab.cepv.entity.Policy"
+                    view="policy-view"/>
+        <collectionDatasource id="customersDs"
+                              class="com.rtcab.cepv.entity.Customer"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from cepv$Customer e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="logDs"
+                              class="com.haulmont.cuba.security.entity.EntityLogItem"
+                              view="logView">
+            <query>
+                <![CDATA[select i from sec$EntityLog i
+                where i.entityRef.entityId = :ds$policyDs order by i.eventTs desc]]>
+            </query>
+            <collectionDatasource id="logAttrDs"
+                                  property="attributes"/>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="tabSheet"
+            spacing="true">
+        <tabSheet id="tabSheet">
+            <tab id="dataTab"
+                 caption="Policy Information"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <fieldGroup id="fieldGroup"
+                            datasource="policyDs">
+                    <column width="250px">
+                        <field property="policyId" editable="false"/>
+                        <field optionsDatasource="customersDs"
+                               property="customer"/>
+                        <field property="coverStartDate"/>
+                        <field property="coverEndDate"/>
+                        <field property="documentsSigningDate"/>
+                        <field property="premium"/>
+                    </column>
+                </fieldGroup>
+            </tab>
+            <tab id="changesTab"
+                 caption="Changes"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <split height="100%"
+                       orientation="vertical"
+                       width="100%">
+                    <table id="logTable"
+                           height="100%"
+                           width="100%">
+                        <columns>
+                            <column id="eventTs"/>
+                            <column id="user.login"/>
+                            <column id="type"/>
+                        </columns>
+                        <rows datasource="logDs"/>
+                    </table>
+                    <table id="logAttrTable"
+                           height="100%"
+                           width="100%">
+                        <columns>
+                            <column id="name"/>
+                            <column id="value"/>
+                        </columns>
+                        <rows datasource="logAttrDs"/>
+                    </table>
+                </split>
+            </tab>
+            <tab id="versionsTab"
+                 caption="Versions"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <frame id="diffFrame"
+                       height="100%"
+                       src="/com/haulmont/cuba/gui/app/core/entitydiff/diff-view.xml"
+                       width="100%"/>
+            </tab>
+        </tabSheet>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

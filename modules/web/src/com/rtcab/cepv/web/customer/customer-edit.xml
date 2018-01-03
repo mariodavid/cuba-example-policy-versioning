@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.rtcab.cepv.web.customer.CustomerEdit"
+        datasource="customerDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.rtcab.cepv.web.customer">
+    <dsContext>
+        <datasource id="customerDs"
+                    class="com.rtcab.cepv.entity.Customer"
+                    view="customer-view">
+            <collectionDatasource id="policiesDs"
+                                  property="policies"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="customerDs">
+            <column width="250px">
+                <field property="name"/>
+            </column>
+        </fieldGroup>
+        <groupBox id="policiesBox"
+                  caption="msg://com.rtcab.cepv.entity/Customer.policies">
+            <table id="policiesTable"
+                   height="200px"
+                   width="100%">
+                <actions>
+                    <action id="create"/>
+                    <action id="edit"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="policyId"/>
+                    <column id="coverStartDate"/>
+                    <column id="coverEndDate"/>
+                </columns>
+                <rows datasource="policiesDs"/>
+                <buttonsPanel>
+                    <button action="policiesTable.create"/>
+                    <button action="policiesTable.edit"/>
+                    <button action="policiesTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

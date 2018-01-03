@@ -1,0 +1,1 @@
+create unique index IDX_CEPV_POLICY_UNIQ_POLICY_ID on CEPV_POLICY (POLICY_ID) ;
