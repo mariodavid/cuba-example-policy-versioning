@@ -28,7 +28,7 @@ public class Policy extends StandardEntity {
     @JoinColumn(name = "CUSTOMER_ID")
     protected Customer customer;
 
-    @Column(name = "POLICY_ID", unique = true)
+    @Column(name = "POLICY_ID")
     protected Long policyId;
 
     @Temporal(TemporalType.DATE)

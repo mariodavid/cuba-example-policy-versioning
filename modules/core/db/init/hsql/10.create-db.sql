@@ -10,7 +10,7 @@ create table CEPV_POLICY (
     DELETED_BY varchar(50),
     --
     CUSTOMER_ID varchar(36) not null,
-    POLICY_ID bigint not null,
+    POLICY_ID bigint,
     COVER_START_DATE date not null,
     COVER_END_DATE date,
     DOCUMENTS_SIGNING_DATE date,

@@ -1,5 +1,4 @@
 -- begin CEPV_POLICY
-alter table CEPV_POLICY add constraint FK_CEPV_POLICY_CUSTOMER foreign key (CUSTOMER_ID) references CEPV_CUSTOMER(ID)^
-create unique index IDX_CEPV_POLICY_UNIQ_POLICY_ID on CEPV_POLICY (POLICY_ID) ^
-create index IDX_CEPV_POLICY_CUSTOMER on CEPV_POLICY (CUSTOMER_ID)^
+alter table CEPV_POLICY add constraint FK_CEPV_POLICY_ON_CUSTOMER foreign key (CUSTOMER_ID) references CEPV_CUSTOMER(ID)^
+create index IDX_CEPV_POLICY_ON_CUSTOMER on CEPV_POLICY (CUSTOMER_ID)^
 -- end CEPV_POLICY

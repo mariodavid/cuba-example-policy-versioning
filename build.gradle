@@ -1,6 +1,6 @@
 
 buildscript {
-    ext.cubaVersion = '6.7.6'
+    ext.cubaVersion = '6.10.9'
     repositories {
         
         maven {
@@ -27,7 +27,7 @@ def guiModule = project(':app-gui')
 def webModule = project(':app-web')
 def webThemesModule = project(':app-web-themes')
 
-def servletApi = 'org.apache.tomcat:tomcat-servlet-api:8.0.26'
+def servletApi = 'javax.servlet:javax.servlet-api:3.1.0'
 
 
 apply(plugin: 'idea')
@@ -48,8 +48,7 @@ cuba {
 }
 
 dependencies {
-    appComponent("de.diedavids.cuba.runtimediagnose:runtime-diagnose-global:0.4.1")
-    appComponent("de.diedavids.cuba.runtimediagnose:runtime-diagnose-global:0.4.1")
+    appComponent("de.diedavids.cuba.runtimediagnose:runtime-diagnose-global:1.2.0")
 
 }
 
@@ -82,10 +81,16 @@ configure([globalModule, coreModule, guiModule, webModule]) {
         main { groovy { srcDirs = ["src"] } }
         test { groovy { srcDirs = ["test"] } }
     }
+
+    sourceSets.main.output.classesDir = new File(project.buildDir, "classes/main")
+    sourceSets.test.output.classesDir = new File(project.buildDir, "classes/test")
+
 }
 
 configure(globalModule) {
-    task enhance(type: CubaEnhancing)
+    entitiesEnhancing {
+        main { enabled = true }
+    }
 
     
 }
@@ -247,7 +252,7 @@ task restart(dependsOn: ['stop', ':app-core:deploy', ':app-web:deploy'], descrip
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.4'
+    gradleVersion = '4.3.1'
 }
 
 apply from: 'extra.gradle'

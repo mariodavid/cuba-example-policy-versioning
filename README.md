@@ -6,11 +6,22 @@ The example domain is an insurance backend. It will store customer information t
 
 The policies should be audited so that it is clear what happened at any point in time of the policy.
 
-### Policy Details page
-![Screenshot Policy detail information](https://github.com/mariodavid/cuba-example-policy-versioning/blob/master/img/policy-information.png)
+## Overview
+![Screenshot Policy detail information](https://github.com/mariodavid/cuba-example-policy-versioning/blob/master/img/0-overview.gif)
 
-### Policy Changes (Entity Log)
-![Screenshot Policy changes - entity log](https://github.com/mariodavid/cuba-example-policy-versioning/blob/master/img/entity-log.png)
+## Entity Log
 
-### Policy History (Entity snapshots)
-![Screenshot Policy changes - entity snapshots](https://github.com/mariodavid/cuba-example-policy-versioning/blob/master/img/entity-snapshots.png)
+#### Policy Changes
+![Screenshot Policy changes - entity log](https://github.com/mariodavid/cuba-example-policy-versioning/blob/master/img/2-policy-changes.png)
+
+#### Customer Changes with composition
+![Screenshot Customer changes - entity log with composition](https://github.com/mariodavid/cuba-example-policy-versioning/blob/master/img/4-customer-changes-composition.png)
+
+
+## Entity snapshots
+
+#### Policy History / Versions
+![Screenshot Policy versions - entity snapshots](https://github.com/mariodavid/cuba-example-policy-versioning/blob/master/img/3-policy-versioning.png)
+
+#### Customer Histroy / Versions with composition
+![Screenshot Customer versions - entity snapshots with composition](https://github.com/mariodavid/cuba-example-policy-versioning/blob/master/img/5-customer-versions-composition.png)
